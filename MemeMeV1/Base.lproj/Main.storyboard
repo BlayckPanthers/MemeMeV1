@@ -54,7 +54,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Lte-VC-Zgv"/>
-                                    <barButtonItem title="Cancel" id="1pc-n4-Fp3" userLabel="cancel"/>
+                                    <barButtonItem title="Cancel" id="1pc-n4-Fp3" userLabel="cancel">
+                                        <connections>
+                                            <action selector="cancelAction:" destination="BYZ-38-t0r" id="5Kz-ka-VfC"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
