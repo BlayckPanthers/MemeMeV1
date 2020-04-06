@@ -60,5 +60,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We would like to take pictures</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We would like to save your masterpiece into your picture&apos;s library</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>impact.ttf</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We would like to access to your library</string>
 </dict>
 </plist>
