@@ -25,11 +25,10 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var meme: Meme?
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.strokeColor: UIColor.black,
-        NSAttributedString.Key.strokeWidth: -3.0,
-        NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.font: UIFont(name: "Impact", size: 40)!
-
+        .strokeColor: UIColor.black,
+        .strokeWidth: -3.0,
+        .foregroundColor: UIColor.white,
+        .font: UIFont(name: "Impact", size: 40)!
     ]
     
     override func viewDidLoad() {
@@ -48,7 +47,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         unsubscribeFromKeyboardNotifications()
     }
 
-    // MARK : ACTIONS
+    //MARK: - ACTIONS
     @IBAction func share(_ sender: Any) {
         let memeToShare = generateMemedImage()
         let activity = UIActivityViewController(activityItems: [memeToShare], applicationActivities: nil)
@@ -77,10 +76,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     @IBAction func pickImageFromLibrary(_ sender: Any) {
-        let imageController = UIImagePickerController()
-        imageController.delegate = self
-        imageController.sourceType = .photoLibrary
-        present(imageController, animated: true, completion: nil)
+        openImagePicker(.photoLibrary)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -89,10 +85,14 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     @IBAction func takePictureWithCamera(_ sender: Any) {
-        let imageController = UIImagePickerController()
-        imageController.delegate = self
-        imageController.sourceType = .camera
-        present(imageController, animated: true, completion: nil)
+        openImagePicker(.camera)
+    }
+    
+    func openImagePicker(_ type: UIImagePickerController.SourceType){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = type
+        present(picker, animated: true, completion: nil)
     }
     
     // Delegate performed when the user cancel picking an image
@@ -132,7 +132,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     
-    // MARK : MEME func
+    //MARK:- MEME func
     func saveMeme(meme: UIImage){
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, imageSelected: imagePicked.image!, meme: meme)
         self.meme = meme

@@ -12,10 +12,8 @@ import UIKit
 extension MemeEditorViewController {
     // MARK : KEYBOARD func
     @objc func keyboardWillShow(_ notification:Notification) {
-        if let text = self.selectedTextField {
-            if text == bottomTextField {
-                self.view.frame.origin.y -= getKeyboardHeight(notification)
-            }
+        if (bottomTextField.isEditing){
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     

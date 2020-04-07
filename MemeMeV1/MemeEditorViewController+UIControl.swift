@@ -12,17 +12,8 @@ import UIKit
 extension MemeEditorViewController {
     // MARK : UI func
     func initializeTextFields(){
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-    
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
-        topTextField.textAlignment = NSTextAlignment.center
-        bottomTextField.textAlignment = NSTextAlignment.center
-        
-        topTextField.autocapitalizationType = .allCharacters
-        bottomTextField.autocapitalizationType = .allCharacters
+        setupTextFieldStyle(toTextField: topTextField, defaultText: "")
+        setupTextFieldStyle(toTextField: bottomTextField, defaultText: "")
     }
     
     func reinitializeUI(){
@@ -30,8 +21,16 @@ extension MemeEditorViewController {
         updateTextFieldText(textField: bottomTextField, text: "")
         enableOrDisableTopBarButton(enable: false)
         imagePicked.image = .none
-        
     }
+    
+    func setupTextFieldStyle(toTextField textField: UITextField, defaultText: String) {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.delegate = self
+        textField.textAlignment = .center
+        textField.autocapitalizationType = .allCharacters
+        textField.text = defaultText
+    }
+    
     
     func updateTextFieldText(textField: UITextField, text: String){
         textField.text = text
