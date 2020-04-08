@@ -75,8 +75,15 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func pickImageFromLibrary(_ sender: Any) {
-        openImagePicker(.photoLibrary)
+    
+    @IBAction func pickImage(_ sender: UIBarButtonItem) {
+        if sender.tag == 0 {
+           openImagePicker(.photoLibrary)
+       }else if sender.tag == 1 {
+           openImagePicker(.camera)
+       }else {
+           print("No actions for this tag")
+       }
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -84,9 +91,6 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         presentAlert(message: "All changes has been discarded")
     }
     
-    @IBAction func takePictureWithCamera(_ sender: Any) {
-        openImagePicker(.camera)
-    }
     
     func openImagePicker(_ type: UIImagePickerController.SourceType){
         let picker = UIImagePickerController()

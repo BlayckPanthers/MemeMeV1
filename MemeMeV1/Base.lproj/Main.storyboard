@@ -25,7 +25,7 @@
                                 <items>
                                     <barButtonItem image="rectangle.stack" catalog="system" id="pgX-rQ-nPE" userLabel="button from gallery">
                                         <connections>
-                                            <action selector="pickImageFromLibrary:" destination="BYZ-38-t0r" id="dsG-2a-OsP"/>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="FLN-jX-Aqh"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YvY-OV-Ruw"/>
@@ -35,9 +35,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ijo-8p-ON6"/>
-                                    <barButtonItem image="camera" catalog="system" width="42" id="cGq-Th-erA" userLabel="button take picture">
+                                    <barButtonItem tag="1" image="camera" catalog="system" width="42" id="cGq-Th-erA" userLabel="button take picture">
                                         <connections>
-                                            <action selector="takePictureWithCamera:" destination="BYZ-38-t0r" id="SVs-gk-VNc"/>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="yFe-U3-cQh"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
