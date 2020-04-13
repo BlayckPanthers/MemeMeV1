@@ -50,10 +50,14 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     //MARK: - ACTIONS
     @IBAction func share(_ sender: Any) {
         let memeToShare = generateMemedImage()
-        let activity = UIActivityViewController(activityItems: [memeToShare], applicationActivities: nil)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, imageSelected: imagePicked.image!, meme: memeToShare)
+        
+        let activity = UIActivityViewController(activityItems: [meme.meme], applicationActivities: nil)
+
         activity.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
-                self.saveMeme(meme: memeToShare)
+                self.saveMeme(meme: meme)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         present(activity, animated: true, completion:nil)
@@ -88,7 +92,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     @IBAction func cancelAction(_ sender: Any) {
         reinitializeUI()
-        presentAlert(message: "All changes has been discarded")
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -137,12 +141,11 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     
     //MARK:- MEME func
-    func saveMeme(meme: UIImage){
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, imageSelected: imagePicked.image!, meme: meme)
-        self.meme = meme
-        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
-        presentAlert(message: "Image saved into your library")
-        
+    func saveMeme(meme: Meme){
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.memes.append(meme)
+        print("HELLOOOOO")
+        print("\((UIApplication.shared.delegate as! AppDelegate).memes.count)")
     }
     
     func generateMemedImage() -> UIImage {

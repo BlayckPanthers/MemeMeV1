@@ -43,7 +43,7 @@ extension MemeEditorViewController {
     
     func enableOrDisableTopBarButton(enable: Bool){
         shareButton.isEnabled = enable
-        cancelButton.isEnabled = enable
+        //cancelButton.isEnabled = enable
     }
     
     func presentAlert(message: String) {
