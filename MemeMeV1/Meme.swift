@@ -13,5 +13,5 @@ struct Meme {
     var topText: String
     var bottomText: String
     var imageSelected: UIImage
-    var meme: UIImage
+    var memedImage: UIImage
 }

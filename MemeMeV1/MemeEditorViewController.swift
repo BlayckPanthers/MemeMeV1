@@ -47,13 +47,13 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         unsubscribeFromKeyboardNotifications()
     }
 
-    //MARK: - ACTIONS
+    //MARK: - ACTIONS Share
     @IBAction func share(_ sender: Any) {
         let memeToShare = generateMemedImage()
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, imageSelected: imagePicked.image!, meme: memeToShare)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, imageSelected: imagePicked.image!, memedImage: memeToShare)
         
-        let activity = UIActivityViewController(activityItems: [meme.meme], applicationActivities: nil)
-
+        let activity = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        
         activity.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
                 self.saveMeme(meme: meme)
@@ -63,6 +63,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         present(activity, animated: true, completion:nil)
     }
     
+    // MARK: - Change Police Action
     @IBAction func changePoliceAction(_ sender: Any) {
         let alert = UIAlertController(title: "Choose Policy", message: "Choose a meme policy", preferredStyle: .actionSheet)
         
@@ -79,7 +80,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         present(alert, animated: true, completion: nil)
     }
     
-    
+    // MARK: - Pick Image action
     @IBAction func pickImage(_ sender: UIBarButtonItem) {
         if sender.tag == 0 {
            openImagePicker(.photoLibrary)
@@ -94,7 +95,6 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         reinitializeUI()
         dismiss(animated: true, completion: nil)
     }
-    
     
     func openImagePicker(_ type: UIImagePickerController.SourceType){
         let picker = UIImagePickerController()
@@ -139,13 +139,11 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         return true
     }
     
-    
-    //MARK:- MEME func
+    //MARK:- MEME funcs
     func saveMeme(meme: Meme){
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         appDelegate.memes.append(meme)
-        print("HELLOOOOO")
-        print("\((UIApplication.shared.delegate as! AppDelegate).memes.count)")
+        
     }
     
     func generateMemedImage() -> UIImage {

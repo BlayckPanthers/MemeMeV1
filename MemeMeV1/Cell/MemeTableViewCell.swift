@@ -11,6 +11,7 @@ import UIKit
 class MemeTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var memeName: UILabel!
     
     override func awakeFromNib() {
